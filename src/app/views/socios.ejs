@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pozziteca</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="container">
+
+        <header class="head">
+            <nav class="topBar">
+                <a href="/" class="link">Socios
+                </a>
+                <a href="/libros" class="link">Libros</a>
+                <a href="/prestamos" class="link">Préstamos</a>
+            </nav>
+        </header>
+    <section class="sec1">
+        <h3>Añadir un nuevo socio</h3>
+        <div class="sec1__div">
+            <form action="/socios" method="post" class="formulario">
+                <!-- nombre -->
+                <div class="divForm">
+                    <label for="name" class="labelForm">Nombre:</label>
+                        <input type="text" name="nombre" class="inputForm">
+                </div>
+                <!-- apellido -->
+                <div class="divForm">
+                    <label for="surn" class="labelForm">Apellido:
+                    </label>
+                        <input type="text" name="apellido" class="inputForm">
+                </div>
+                <!-- DNI -->
+               <div class="divForm">
+                    <label for="mail" class="labelForm">DNI:
+                    </label>
+                        <input type="text" name="dni" class="inputForm">
+                </div>
+                <!-- direccion -->
+                <div class="divForm">
+                    <label for="mail" class="labelForm">Dirección:
+                    </label>
+                        <input type="text" name="direccion" class="inputForm">
+                </div>
+                <!-- localidad ID -->
+                <!-- <div class="divForm">
+                    <label for="mail" class="labelForm">Localidad:
+                    </label>
+                        <input type="text" name="localidad" class="inputForm">
+                </div> -->
+                <!-- telefono -->
+                <div class="divForm">
+                    <label for="telefono" class="labelForm" >Teléfono:
+                    </label>
+                    <input type="text" name="telefono" class="inputForm">
+                </div>
+                <!-- email -->
+               <div class="divForm">
+                    <label for="mail" class="labelForm">Email:
+                    </label>
+                        <input type="text" name="email" class="inputForm">
+                </div> 
+                <!-- fecha de alta -->
+                <!-- <div class="divForm">
+                    <label for="mail" class="labelForm">Fecha de alta:
+                    </label>
+                        <input type="text" name="fecha_alta" class="inputForm">
+                </div>  -->
+                <!-- categoria ID -->
+                <!-- <div class="divForm">
+                    <label for="mail" class="labelForm">Categoria:
+                    </label>
+                        <input type="text" name="categoria" class="inputForm">
+                </div>  -->
+                <input type="submit" value="Agregar" class="btn">
+                </form>
+        </div>
+   </section>
+    <section class="sec4">
+        <h3>Listado de socios</h3>
+        <div class="formulario1">
+            <table class="tabla">
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>DNI</th>
+                    <th>DIRECCIÓN</th>
+                    <!-- <th>LOCALIDAD</th> -->
+                    <th>TELEFONO</th>
+                    <th>EMAIL</th>
+                    <!-- <th>FECHA ALTA</th>
+                    <th>CATEGORIA</th> -->
+                </tr>
+                   <% socios.forEach(socio=>{%>
+                <tr>
+                    <td><%= socio.id_socio %></td>
+                    <td><%= socio.nombre %></td>
+                    <td><%= socio.apellido %></td>
+                    <td><%= socio.dni %></td>
+                    <td><%= socio.direccion %></td>
+                    <td><%= socio.telefono %></td>
+                    <td><%= socio.email %></td>
+    
+                </tr>
+                <% }) %> 
+            </table>
+        </div>
+    </section>
+    <section class="sec3">
+        <h3>Baja de socio</h3>
+        <form action="/borrar" method="post" class="formulario">
+            <select name="registroId" class="inputForm">
+                <% socios.forEach(socios=>{%>
+                <option value="<%= socios.id_socio %>"><%= socios.nombre +" "+socios.apellido %></option>
+                <% }) %> 
+            </select>
+            <button type="submit" class="btn">Dar de baja socio</button>
+        </form>
+    </section>
+    <section class="sec2">
+        <h3>Modificar socio</h3>
+        <form action="/editar" method="post" class="formulario">
+            <label for="registroId" class="labelForm">Seleccione el registro a editar</label>
+            <select name="registroId" class="inputForm">
+                <% socios.forEach(socios=>{%>
+                    <option value="<%= socios.id_socio %>"><%= socios.nombre +" "+socios.apellido %></option>
+                    <% }) %> 
+            </select>
+
+            <!-- nombre -->
+            <div class="divForm">
+                <label for="name" class="labelForm">Nombre:</label>
+                    <input type="text" name="nombre" class="inputForm">
+            </div>
+            <!-- apellido -->
+            <div class="divForm">
+                <label for="surn" class="labelForm">Apellido:
+                </label>
+                    <input type="text" name="apellido" class="inputForm">
+            </div>
+            <!-- DNI -->
+           <div class="divForm">
+                <label for="mail" class="labelForm">DNI:
+                </label>
+                    <input type="text" name="dni" class="inputForm">
+            </div>
+            <!-- direccion -->
+            <div class="divForm">
+                <label for="mail" class="labelForm">Dirección:
+                </label>
+                    <input type="text" name="direccion" class="inputForm">
+            </div>
+
+            <!-- telefono -->
+            <div class="divForm">
+                <label for="telefono" class="labelForm" >Teléfono:
+                </label>
+                <input type="text" name="telefono" class="inputForm">
+            </div>
+            <!-- email -->
+           <div class="divForm">
+                <label for="mail" class="labelForm">Email:
+                </label>
+                    <input type="text" name="email" class="inputForm">
+            </div> 
+            <button type="submit" class="btn">Modificar</button>
+        </form>
+    </section>
+</body>
+</html>

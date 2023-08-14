@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pozziteca</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="container">
+
+
+        <header class="head">
+            <nav class="topBar">
+                <a href="/" class="link">Socios
+                </a>
+                <a href="/libros" class="link">Libros</a>
+                <a href="/prestamos" class="link">Préstamos</a>
+            </nav>
+        </header>
+        <section class="sec1">
+            <h3>Cargar préstamo</h3>
+            <div class="sec1__div">
+                <form action="/carga_prestamo" method="post" class="formulario">
+                    <!-- ID LIBRO -->
+                    <div class="divForm">
+                        <label for="id_libro" class="labelForm">ID Libro:</label>
+                            <input type="text" name="id_libro" class="inputForm">
+                    </div>
+                    <!-- id ejemplar -->
+                    <div class="divForm">
+                        <label for="id_ejemplar" class="labelForm">ID Ejemplar:
+                        </label>
+                            <input type="text" name="id_ejemplar" class="inputForm">
+                    </div>
+                    <!-- ID SOCIO -->
+                   <div class="divForm">
+                        <label for="id_socio" class="labelForm">ID Socio:
+                        </label>
+                            <input type="text" name="id_socio" class="inputForm">
+                    </div>
+                    <!-- RETIRO -->
+                    <!-- <div class="divForm">
+                        <label for="fecha_retiro" class="labelForm">Fecha de retiro:
+                        </label>
+                            <input type="text" name="fecha_retiro" class="inputForm">
+                    </div> -->
+                    <!-- ENTREGA -->
+                    <!-- <div class="divForm">
+                        <label for="fecha_entrega" class="labelForm" >Fecha de entrega:
+                        </label>
+                        <input type="text" name="fecha_entrega" class="inputForm">
+                    </div> -->
+                    <!-- EXTENSIÓN -->
+                   <div class="divForm">
+                        <label for="id_extension" class="labelForm">ID Extensión:
+                        </label>
+                            <input type="text" name="id_extension" class="inputForm">
+                    </div>
+                    <input type="submit" value="Agregar" class="btn">
+                    </form>
+            </div>
+       </section>
+       <section class="sec2">
+        <h3>Modificar información de un libro</h3>
+        <form action="/editar_prestamo" method="post" class="formulario">
+            <label for="registroId" class="labelForm">Seleccione el registro a editar</label>
+            <select name="registroId" class="inputForm">
+                <% prestamos.forEach(prestamo=>{%>
+                    <option value="<%= prestamo.id_prestamo %>"><%= prestamo.id_prestamo%></option>
+                    <% }) %>
+            </select>
+
+
+            <!-- ID LIBRO -->
+            <div class="divForm">
+                <label for="id_libro" class="labelForm">ID Libro:</label>
+                    <input type="text" name="id_libro" class="inputForm">
+            </div>
+            <!-- id ejemplar -->
+            <div class="divForm">
+                <label for="id_ejemplar" class="labelForm">ID Ejemplar:
+                </label>
+                    <input type="text" name="id_ejemplar" class="inputForm">
+            </div>
+            <!-- ID SOCIO -->
+           <div class="divForm">
+                <label for="id_socio" class="labelForm">ID Socio:
+                </label>
+                    <input type="text" name="id_socio" class="inputForm">
+            </div>
+            <div class="divForm">
+                <label for="id_extension" class="labelForm">ID Extensión:
+                </label>
+                    <input type="text" name="id_extension" class="inputForm">
+            </div>
+                <button type="submit" class="btn">Modificar<button>
+        </form>
+    </section>
+    <section class="sec3">
+        <h3>Devolución de libros</h3>
+        <form action="/devolucion" method="post" class="formulario">
+            <select name="registroId" class="inputForm">
+                <% prestamos.forEach(prestamo=>{%>
+                    <option value="<%= prestamo.id_prestamo %>"><%= prestamo.id_prestamo%></option>
+                    <% }) %>
+            </select>
+            <button type="submit" class="btn">Devolver libro</button>
+        </form>
+    </section>
+        <section class="sec4">
+            <h3>Listado de libros prestados
+            </h3>
+            <div class="formulario1">
+            <table class="tabla">
+                <tr>
+                    <th class="encabez">ID PRESTAMO</th>
+                    <th class="encabez">ID LIBRO</th>
+                    <th class="encabez">TITULO</th>
+                    <th class="encabez">ID EJEMPLAR</th>
+                    <th class="encabez">ID SOCIO</th>
+                    <th class="encabez">NOMBRE</th>
+                    <th class="encabez">APELLIDO</th>
+                    <!-- <th class="encabez">FECHA DE RETIRO</th>
+                    <th class="encabez">FECHA DE ENTREGA</th> -->
+                    <th class="encabez">EXTENSIÓN</th>
+                </tr>
+                <% prestamos.forEach(prestamo=>{%>
+                    <tr>
+                        <td><%= prestamo.id_prestamo %></td>
+                        <td><%= prestamo.id_libro %></td>
+                        <td><%= prestamo.titulo %></td>
+                        <td><%= prestamo.id_ejemplar %></td>
+                        <td>De estar</td>
+                        <td>vinculadas,</td>
+                        <td>aparecería</td>
+                        <td><%= prestamo.id_extension %></td>
+                    </tr>
+                    <% }) %>
+            </table>
+        </div>
+        </section>
+</body>
+</html>

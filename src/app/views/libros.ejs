@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pozziteca</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="container">
+        <header class="head">
+            <nav class="topBar">
+                <a href="/" class="link">Socios
+                </a>
+                <a href="/libros" class="link">Libros</a>
+                <a href="/prestamos" class="link">Préstamos</a>
+            </nav>
+        </header>
+    <section class="sec1">
+        <h3>Añadir un nuevo libro</h3>
+        <form action="/libronuevo" method="post" class="formulario">
+            <!-- titulo -->
+            <div class="divForm">
+                <label for="titulo" class="labelForm">Titulo:</label>
+                    <input type="text" name="titulo" class="inputForm">
+            </div>
+            <!-- isbn -->
+            <!-- <div class="divForm">
+                <label for="isbn" class="labelForm">ISBN:
+                </label>
+                    <input type="text" name="isbn" class="inputForm">
+            </div>
+            Autor -->
+            <!-- <div class="divForm">
+                <label for="id_autor" class="labelForm">ID Autor:
+                </label>
+                    <input type="text" name="id_autor" class="inputForm">
+            </div> -->
+            <!-- Editorial -->
+            <!-- <div class="divForm">
+                <label for="id_editorial" class="labelForm">ID Editorial:
+                </label>
+                    <input type="text" name="id_editorial" class="inputForm">
+            </div> -->
+            <!-- Genero -->
+            <!-- <div class="divForm">
+                <label for="id_genero" class="labelForm">ID Genero:
+                </label>
+                    <input type="text" name="id_genero" class="inputForm">
+            </div> -->
+            <!-- Formato -->
+            <!-- <div class="divForm">
+                <label for="mail" class="labelForm">ID Formato:
+                </label>
+                    <input type="text" name="id_formato" class="inputForm">
+            </div> -->
+            <!-- Idioma -->
+            <div class="divForm">
+                <label for="idioma" class="labelForm" >Idioma:
+                </label>
+                <input type="text" name= "idioma" class="inputForm">
+            </div>
+            <!-- Ejemplares Cantidad -->
+            <div class="divForm">
+                <label for="ejemplares" class="labelForm">Ejemplares (Cantidad total):
+                </label>
+                    <input type="text" name="ejemplares" class="inputForm">
+            </div>
+           
+                <button type="submit" class="btn">Agregar<button>
+        </form>
+    </section>
+
+
+    <section class="sec3">
+        <h3>Borrar un libro del resgistro</h3>
+        <form action="/borrar_libro" method="post" class="formulario">
+            <select name="registroId" class="inputForm">
+                <% libros.forEach(libro=>{%>
+                <option value="<%= libro.id_libro %>"><%= libro.titulo %></option>
+                <% }) %>
+            </select>
+            <button type="submit" class="btn">Eliminar libro</button>
+        </form>
+    </section>
+    <section class="sec2">
+        <h3>Modificar información de un libro</h3>
+        <form action="/editar_libro" method="post" class="formulario">
+            <label for="registroId" class="labelForm">Seleccione el registro a editar</label>
+            <select name="registroId" class="inputForm">
+                <% libros.forEach(libro=>{%>
+                    <option value="<%= libro.id_libro %>"><%= libro.titulo%></option>
+                    <% }) %>
+            </select>
+
+
+            <div class="divForm">
+                <label for="titulo" class="labelForm">Titulo:</label>
+                    <input type="text" name="titulo" class="inputForm">
+            </div>
+            <!-- isbn -->
+            <!-- <div class="divForm">
+                <label for="isbn" class="labelForm">ISBN:
+                </label>
+                    <input type="text" name="isbn" class="inputForm">
+            </div>
+            Autor -->
+            <!-- <div class="divForm">
+                <label for="id_autor" class="labelForm">ID Autor:
+                </label>
+                    <input type="text" name="id_autor" class="inputForm">
+            </div> -->
+            <!-- Editorial -->
+            <!-- <div class="divForm">
+                <label for="id_editorial" class="labelForm">ID Editorial:
+                </label>
+                    <input type="text" name="id_editorial" class="inputForm">
+            </div> -->
+            <!-- Genero -->
+            <!-- <div class="divForm">
+                <label for="id_genero" class="labelForm">ID Genero:
+                </label>
+                    <input type="text" name="id_genero" class="inputForm">
+            </div> -->
+            <!-- Formato -->
+            <!-- <div class="divForm">
+                <label for="mail" class="labelForm">ID Formato:
+                </label>
+                    <input type="text" name="id_formato" class="inputForm">
+            </div> -->
+            <!-- Idioma -->
+            <div class="divForm">
+                <label for="idioma" class="labelForm" >Idioma:
+                </label>
+                <input type="text" name= "idioma" class="inputForm">
+            </div>
+            <!-- Ejemplares Cantidad -->
+            <div class="divForm">
+                <label for="ejemplares" class="labelForm">Ejemplares (Cantidad total):
+                </label>
+                    <input type="text" name="ejemplares" class="inputForm">
+            </div>
+           
+                <button type="submit" class="btn">Modificar<button>
+        </form>
+    </section>
+    <section class="sec4">
+        <h3>Listado de libros</h3>
+        <div class="formulario1">
+            <table class="tabla">
+                <tr>
+                    <th>ID</th>
+                    <th>TITULO</th>
+                    <!-- <th>ISBN</th> -->
+                    <!-- <th>AUTOR</th>
+                    <th>EDITORIAL</th> -->
+                    <!-- <th>GENERO</th> -->
+                    <!-- <th>FORMATO</th> -->
+                    <th>IDIOMA</th>
+                    <th>EJEMPLARES</th>
+                </tr>
+                   <% libros.forEach(libro=>{%>
+                <tr>
+                    <td><%= libro.id_libro %></td>
+                    <td><%= libro.titulo %></td>
+                    <td><%= libro.idioma %></td>
+                    <td><%= libro.ejemplares %></td>
+   
+                </tr>
+                <% }) %>
+            </table>
+        </div>
+        </section>
+   
+
+
+</body>
+</html>

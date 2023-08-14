@@ -1,0 +1,142 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #274C77;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr ;
+    grid-template-areas: "head head head head head head"
+    "sec1 sec1 sec1 sec4 sec4 sec4"
+    "sec2 sec2 sec2 sec4 sec4 sec4"
+    "sec3 sec3 sec3 sec4 sec4 sec4";
+}
+
+
+.head{
+    grid-area: head;
+    background-image: url(/img/books_opac80.png);
+    background-size: cover;
+}
+
+
+.topBar{
+    background-color: rgba(0, 0, 0, 0.744);
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+}
+.link{
+    font-size: 20px;
+    text-decoration: none;
+    padding: 1em;
+    margin: 1em;
+}
+.link:link{
+    color: white;
+}
+.link:visited{
+    color: white;
+}
+.link:hover{
+    color: #3E6088;
+    transition: .2s;
+}
+
+
+.formulario{
+    background-color: #DCE7FC;
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 10px;
+    max-width: 40em;
+}
+.formulario1{
+    background-color: #DCE7FC;
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 10px;
+}
+.tabla{
+    background-color: #e6ebf4;
+    border-radius: 10px;
+    width: 50em;
+    padding: 1em;
+    border-collapse: collapse;
+}
+th, td {
+    border: 0.5px solid #DCE7FC;
+    padding: 0.5em;
+    color: #052F61;
+  }
+.encabez{
+   
+    text-align: center;
+}
+
+
+.btn{
+    width: 10em;
+    font-size: 15px;
+    padding: 0.5em;
+    border-radius: 10px;
+    border: 0px;
+    color: white;
+    background-color: #052F61;
+    margin:0.5em 0em 0em 0em;
+}
+
+
+.divForm{
+    display: flex;
+    flex-direction: column;
+}
+.sec1{
+    grid-area: sec1;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2em;
+}
+.sec2{
+    grid-area: sec2;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2em;
+}
+.sec3{
+    grid-area: sec3;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+.sec4{
+    grid-area: sec4;
+    justify-self: center;
+    padding: 2em;
+}
+.labelForm{
+    text-align: left;
+    padding: 0.2em 0em;
+    font-size: 1.2em;
+    color: #052F61;
+}
+.inputForm{
+    border: 0.5px;
+    border-radius: 10px;
+    padding: 0.2em 0.2em ;
+    color: #052F61;
+}
+h3{
+    font-size: 2em;
+    color: white;
+}
